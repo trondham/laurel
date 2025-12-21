@@ -1,4 +1,4 @@
-policy_module(laurel, 1.0.4)
+policy_module(laurel, 1.0.5)
 
 type laurel_t;
 type laurel_exec_t;
