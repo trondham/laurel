@@ -1,4 +1,4 @@
-policy_module(laurel, 1.0.2)
+policy_module(laurel, 1.0.3)
 
 type laurel_t;
 type laurel_exec_t;
@@ -19,10 +19,10 @@ ifdef(`audit3',`
 	allow auditd_t laurel_etc_t:dir search;
 	allow auditd_t laurel_etc_t:file { getattr open read };
 	allow auditd_t laurel_log_t:dir { add_name getattr remove_name search setattr write };
-	allow auditd_t laurel_log_t:file { create open rename setattr unlink };
+	allow auditd_t laurel_log_t:file { create open read rename setattr unlink };
 	allow auditd_t auditctl_exec_t:file getattr;
 	type_transition auditd_t laurel_exec_t:process laurel_t;
-	allow auditd_t auditd_t:capability { dac_read_search kill setgid setuid };
+	allow auditd_t auditd_t:capability { dac_read_search kill setgid setuid sys_ptrace };
 	allow auditd_t laurel_t:process { transition signal };
 ')
 
